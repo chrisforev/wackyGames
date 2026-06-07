@@ -12,9 +12,11 @@ How all the pieces of https://wackygames.com.au fit together.
               │  VentraIP (registrar) delegates to     │
               │  Cloudflare's nameservers              │
               │  (ines / quentin .ns.cloudflare.com).  │
-              │  Cloudflare DNS answers with a CNAME:  │
-              │  wackygames.com.au → wackygames        │
-              │  .pages.dev (and www → same), proxied. │
+              │  Zone is configured with proxied       │
+              │  CNAMEs (@ and www →                   │
+              │  wackygames.pages.dev); Cloudflare     │
+              │  flattens these and answers queries    │
+              │  with its own edge A records.          │
               └───────────────────┬────────────────────┘
                                   │
               ┌───────────────────▼────────────────────┐
@@ -33,12 +35,13 @@ How all the pieces of https://wackygames.com.au fit together.
               │  - physics/enemies simulated locally   │
               │  - progress saved to localStorage      │
               │  - polls version.json → auto-updates   │
-              │    at the menu, never mid-run          │
+              │    at menu/game-over, never mid-run    │
               └───────────────────┬────────────────────┘
                                   │ multiplayer only:
               ┌───────────────────▼────────────────────┐
               │  CLOUDFLARE WORKER (wackyshooter-mp)   │
-              │  workers.dev URL, Durable Objects:     │
+              │  wackyshooter-mp.liviayangbobba        │
+              │  .workers.dev — Durable Objects:       │
               │  - Lobby DO  = public server list      │
               │  - Room DO   = one per game, ≤4 players│
               │    relays JSON over WebSockets         │
@@ -51,7 +54,7 @@ How all the pieces of https://wackygames.com.au fit together.
 |---|---|---|---|
 | Portal page | `wackyGames/site/` | Cloudflare Pages | Landing page with a card per game |
 | wackyShooter | `wackyShooter/` (own repo) | player's browser | The actual game (Phaser 3 + TypeScript) |
-| Multiplayer backend | `wackyShooter/server/` | Cloudflare Workers + Durable Objects | Room list + WebSocket message relay |
+| Multiplayer backend | `wackyShooter/server/` | Cloudflare Workers + Durable Objects (https://wackyshooter-mp.liviayangbobba.workers.dev, `MP_BASE` in `wackyShooter/src/net.ts`) | Room list + WebSocket message relay |
 | DNS / domain | Cloudflare zone `wackygames.com.au` | Cloudflare edge | Points the domain at Pages, proxied + HTTPS |
 
 GitHub (account **chrisforev**): `chrisforev/wackyGames` (portal) and
@@ -77,8 +80,9 @@ GitHub (account **chrisforev**): `chrisforev/wackyGames` (portal) and
 
 4. **Auto-update without breaking runs.** Every deploy embeds a build id and
    writes `version.json`. Running games poll it (60s + on tab focus) and
-   reload only at the menu/game-over screens; the autosaved run means even a
-   mid-run reload loses nothing.
+   reload only at the menu/game-over screens. In **singleplayer** the
+   autosaved run (CONTINUE) means even a reload loses nothing; multiplayer
+   runs are not saved — they live and die with the room.
 
 5. **One portal, many games.** Each game is its own repo built with
    `base: './'` so it works from any subpath. `wackyGames/build.sh` builds
