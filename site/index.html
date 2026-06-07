@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wacky Games 🎮 — silly browser games, free to play</title>
+    <meta name="description" content="Wacky Games — a growing collection of silly, free browser games. Blast dancing tomatoes in wackyShooter and more. No downloads, works on phones, tablets and computers." />
+    <meta name="keywords" content="free browser games, kids games, wacky games, arena shooter, html5 games" />
+    <link rel="canonical" href="https://wackygames.com.au/" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Wacky Games 🎮" />
+    <meta property="og:description" content="A growing collection of silly, free browser games. No downloads — play on anything." />
+    <meta property="og:url" content="https://wackygames.com.au/" />
+    <meta property="og:image" content="https://wackyshooter.pages.dev/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        background: #16213e;
+        background-image:
+          radial-gradient(circle at 15% 20%, rgba(255, 225, 53, 0.07) 0, transparent 30%),
+          radial-gradient(circle at 85% 75%, rgba(112, 224, 0, 0.07) 0, transparent 30%),
+          radial-gradient(circle at 70% 15%, rgba(255, 92, 138, 0.07) 0, transparent 25%);
+        font-family: 'Courier New', monospace;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 32px 16px 48px;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(40px, 9vw, 76px);
+        color: #ffe135;
+        -webkit-text-stroke: 2px #000;
+        text-shadow: 5px 5px 0 #000;
+        animation: wiggle 1.2s ease-in-out infinite;
+        margin-top: 16px;
+      }
+      @keyframes wiggle {
+        0%, 100% { transform: rotate(-2deg); }
+        50% { transform: rotate(2deg); }
+      }
+      .tagline {
+        margin: 18px 0 40px;
+        font-size: clamp(15px, 3vw, 20px);
+        color: #c8d6ff;
+      }
+      .games {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        justify-content: center;
+        max-width: 980px;
+        width: 100%;
+      }
+      .card {
+        background: #1f2b52;
+        border: 4px solid #000;
+        border-radius: 18px;
+        box-shadow: 8px 8px 0 #000;
+        padding: 26px 22px 30px;
+        width: min(360px, 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        color: #fff;
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
+      }
+      a.card:hover,
+      a.card:focus-visible {
+        transform: translate(-3px, -3px) rotate(-1deg);
+        box-shadow: 11px 11px 0 #000;
+      }
+      a.card:active {
+        transform: translate(2px, 2px);
+        box-shadow: 4px 4px 0 #000;
+      }
+      .card .emoji {
+        font-size: 64px;
+        line-height: 1;
+        animation: bounce 0.9s ease-in-out infinite;
+      }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0) rotate(-6deg); }
+        50% { transform: translateY(-9px) rotate(6deg); }
+      }
+      .card h2 {
+        font-size: 28px;
+        color: #ffe135;
+        text-shadow: 3px 3px 0 #000;
+      }
+      .card p {
+        font-size: 15px;
+        line-height: 1.45;
+        color: #c8d6ff;
+        min-height: 44px;
+      }
+      .play {
+        display: inline-block;
+        background: #70e000;
+        color: #06120a;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: inherit;
+        padding: 12px 34px;
+        border: 3px solid #000;
+        border-radius: 12px;
+        box-shadow: 4px 4px 0 #000;
+      }
+      .card.soon {
+        opacity: 0.65;
+        border-style: dashed;
+        cursor: default;
+      }
+      .card.soon .emoji {
+        animation: none;
+        filter: grayscale(0.4);
+      }
+      .card.soon .play {
+        background: #44507e;
+        color: #c8d6ff;
+      }
+      footer {
+        margin-top: 52px;
+        font-size: 13px;
+        color: #8794bd;
+      }
+      footer a {
+        color: #c8d6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎮 WACKY GAMES</h1>
+    <p class="tagline">Silly games. Zero downloads. Works on phones, tablets &amp; computers.<br />Pick a game and go!</p>
+
+    <main class="games">
+      <a class="card" href="./shooter/">
+        <span class="emoji">🍌🐔🍅</span>
+        <h2>wackyShooter</h2>
+        <p>Blast dancing tomatoes and angry toasters with banana blasters and rubber chickens. Survive endless stages!</p>
+        <span class="play">▶ PLAY</span>
+      </a>
+
+      <div class="card soon">
+        <span class="emoji">❓</span>
+        <h2>Game 2</h2>
+        <p>Top secret! Livia is cooking up the next wacky game right now…</p>
+        <span class="play">COMING SOON</span>
+      </div>
+    </main>
+
+    <footer>Made with 💛 by Livia &middot; <a href="https://github.com/chrisforev/wackyShooter">wackyShooter on GitHub</a></footer>
+  </body>
+</html>
