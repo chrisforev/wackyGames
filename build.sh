@@ -20,5 +20,10 @@ cp -R ../wackyShooter/dist/ dist/shooter/
 mkdir -p dist/cafe
 cp -R ../crazyCafe/dist/ dist/cafe/
 
+# game 3: Fruit Clicker -> /fruit/
+(cd ../fruitClicker && npm run build)
+mkdir -p dist/fruit
+cp -R ../fruitClicker/dist/ dist/fruit/
+
 echo "dist/ ready — deploy with:"
 echo "  npx wrangler pages deploy dist --project-name wackygames --branch main"
