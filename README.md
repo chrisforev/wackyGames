@@ -14,6 +14,8 @@ The Wacky Games portal — one landing page, a button per game.
 - `site/` — the static landing page (no build step, plain HTML/CSS)
 - `build.sh` — builds each game from its sibling repo under `~/dev/LiviaGames/` and assembles everything into `dist/`: portal at `/`, each game in its own subfolder
 
+Full design (DNS → Pages → game → multiplayer backend, deploy flow, credentials): [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
 ## Build & deploy
 
 ```bash
