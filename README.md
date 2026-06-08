@@ -9,7 +9,8 @@ The Wacky Games portal — one landing page, a button per game.
 | 🍌 wackyShooter | [/shooter/](https://wackygames.com.au/shooter/) | [chrisforev/wackyShooter](https://github.com/chrisforev/wackyShooter) |
 | 🍔 Crazy Café | [/cafe/](https://wackygames.com.au/cafe/) | `~/dev/LiviaGames/crazyCafe` |
 | 🍊 Fruit Clicker | [/fruit/](https://wackygames.com.au/fruit/) | `~/dev/LiviaGames/fruitClicker` |
-| ❓ Game 4 | coming soon | — |
+| 🥷 Wacky Parkour | [/parkour/](https://wackygames.com.au/parkour/) | `~/dev/LiviaGames/wackyParkour` |
+| ❓ Game 5 | coming soon | — |
 
 ## How it works
 
